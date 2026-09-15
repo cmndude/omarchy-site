@@ -1,17 +1,10 @@
 import { Popover } from '@base-ui/react/popover'
 import { useState } from 'react'
-import { CatalanIcon } from '@/components/icons/CatalanIcon'
+import { LocaleFlag } from '@/components/LocaleFlag'
 import { GlobeIcon } from '@/components/icons/GlobeIcon'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import {
-  flag,
-  hasTranslation,
-  language,
-  locale,
-  sortedLocales,
-  t,
-} from '@/i18n/site'
+import { hasTranslation, language, locale, sortedLocales, t } from '@/i18n/site'
 
 export function LanguageSwitcher({ path }: { path: string }) {
   const [suffix, setSuffix] = useState('')
@@ -70,11 +63,10 @@ export function LanguageSwitcher({ path }: { path: string }) {
                       className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-ring aria-current:bg-surface-2"
                     >
                       <span aria-hidden="true" className="text-xl">
-                        {entry.flag === 'ES-CT' ? (
-                          <CatalanIcon className="inline-block h-4 w-6 align-middle" />
-                        ) : (
-                          flag(entry.domain, entry.flag)
-                        )}
+                        <LocaleFlag
+                          locale={entry}
+                          imageClassName="inline-block h-4 w-6 align-middle"
+                        />
                       </span>
                       <span dir="auto">{entry.name}</span>
                     </a>

@@ -20,7 +20,7 @@ import {
   StoreIcon,
 } from '@/components/icons'
 import { OmarchyMark } from '@/components/Brand'
-import { CatalanIcon } from '@/components/icons/CatalanIcon'
+import { LocaleFlag } from '@/components/LocaleFlag'
 import { GlobeIcon } from '@/components/icons/GlobeIcon'
 import type { SearchEntry } from '@/lib/content'
 import { getSearchIndex } from '@/lib/content'
@@ -425,16 +425,15 @@ function MenuRow({ item, crumb }: { item: MenuItem; crumb?: string }) {
   const Icon = ICONS[item.icon]
   return (
     <>
-      {item.glyph ? (
+      {item.locale ? (
         <span
           aria-hidden="true"
           className="w-4 shrink-0 text-center leading-none"
         >
-          {item.locale && locales[item.locale]?.flag === 'ES-CT' ? (
-            <CatalanIcon className="inline-block h-auto w-4 align-middle" />
-          ) : (
-            item.glyph
-          )}
+          <LocaleFlag
+            locale={locales[item.locale]}
+            imageClassName="inline-block h-auto w-4 align-middle"
+          />
         </span>
       ) : (
         <Icon className="size-4 shrink-0 opacity-80" />
